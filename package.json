@@ -1,0 +1,29 @@
+{
+  "name": "home.aura",
+  "version": "0.0.0",
+  "description": "Home Aura",
+  "main": "index.js",
+  "author": {
+    "name": "Jesse the Game",
+    "email": "jesse@jessethegame.net"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "socket.io": "*",
+    "socket.io-client": "*",
+    "request": "^2.34.0",
+    "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "coffee-script": "*",
+    "mocha": "*",
+    "should": "*",
+    "uglify-js": "*",
+    "nock": "*"
+  },
+  "scripts": {
+    "prepublish": "coffee -o ./lib ./src",
+    "test": "make test"
+  }
+}
