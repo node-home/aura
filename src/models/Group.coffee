@@ -5,7 +5,7 @@ hue = home.apps.aura.hue
 
 class Group
   constructor: ({@id, @name}) ->
-    null
+    @id ?= 0
 
   @get: (uid) ->
     hue.groups.show uid

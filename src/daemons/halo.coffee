@@ -4,7 +4,7 @@ spot = require 'home.spot'
 models = require '../models'
 utils  = require '../utils'
 
-mixArua = (components, {radiusMin, radiusMax}) ->
+mixAura = (components, {radiusMin, radiusMax}) ->
   totalWeight = 0
 
   for c in components

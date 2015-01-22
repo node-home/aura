@@ -2,8 +2,15 @@ request = require 'request'
 Q       = require 'Q'
 _       = require 'lodash'
 
-module.exports = (ip, app='hue') ->
-  hue = {ip, app}
+# The reason that this is not a class is because of
+# the nested resources that reference the hue instance.
+module.exports = (ip, options={}) ->
+  hue = _.defaults {ip}, options,
+    app: 'hue'
+    verbose: false
+
+  hue.log = (args...) ->
+    console.log "[hue]", args... if hue.verbose
 
   hue.request = (method, path, options) =>
     options ||= {}
@@ -16,14 +23,14 @@ module.exports = (ip, app='hue') ->
       return deferred.reject body if err
       deferred.resolve body
 
-    console.log method, path, options
+    hue.log method, path, options
 
     deferred.promise
       .then (data) ->
-        console.log "✓", path, options, data
+        hue.log "✓", path, options, data
         data
       .catch (data) ->
-        console.log "✗", path, options, data
+        hue.log "✗", path, options, data
         data
 
   hue.get = (path) ->

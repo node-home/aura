@@ -14,8 +14,15 @@ module.exports = home.app module,
     Light control for your home.
   """
   , (app) ->
-    app.hue = new core.Hue '192.168.1.70', 'jessethegame'
+    throw new Error "HUE_IP missing from env" unless process.env.HUE_IP
+    throw new Error "HUE_APP missing from env" unless process.env.HUE_APP
+
+    app.hue = new core.Hue [
+      process.env.HUE_IP
+      process.env.HUE_APP
+    ]...
 
     app.actions = require './actions'
     app.models = require './models'
+    app.utils = require './utils'
     # app.grammar = require './grammar'

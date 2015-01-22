@@ -21,7 +21,7 @@ toggleParams =
     default: 0
 
 toggleCallback = (state, light, ms) ->
-  if light
+  if light?
     models.Light.get light
       .then (light) ->
         light.toggle state, ms

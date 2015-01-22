@@ -32,7 +32,7 @@ mix = (components) ->
 
   joinRGB result
 
-rgbToHsl: ({r, g, b}) ->
+rgbToHsl = ({r, g, b}) ->
   r /= 255
   g /= 255
   b /= 255
@@ -56,8 +56,8 @@ rgbToHsl: ({r, g, b}) ->
 
   {h, s, l}
 
-rgbToHsb: (rgb) ->
-  hsl = color.rgbToHsl rgb
+rgbToHsb = (rgb) ->
+  hsl = rgbToHsl rgb
   hue: Math.floor hsl.h * 65535
   sat: Math.floor hsl.s * 255
   bri: Math.floor hsl.l * 255
